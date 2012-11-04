@@ -14,7 +14,7 @@ QCvImageWindow::~QCvImageWindow()
     _imageLabel->deleteLater();
     _currentWindowLayout->deleteLater();
 
-#ifndef QCVIMAGEWINDOW_DONT_USE_OPENCV
+#ifdef QCVIMAGEWINDOW_USE_OPENCV
     _cvMatForQImage.release();
 #endif
 }
@@ -28,7 +28,7 @@ bool QCvImageWindow::setImageFromFilePath(QString filePath){
     else{ return false;}
 }
 
-#ifndef QCVIMAGEWINDOW_DONT_USE_OPENCV
+#ifdef QCVIMAGEWINDOW_USE_OPENCV
 // TODO: Support various type of images (cv::Mat)
 bool QCvImageWindow::setImageFromCvMat(cv::Mat source){
     // do retain _cvMatForQImage(cv::Mat) !
