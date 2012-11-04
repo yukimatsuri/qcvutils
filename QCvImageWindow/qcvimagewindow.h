@@ -13,8 +13,8 @@ miniWindow->show();                                    // => Show the window of 
 #ifndef QCVIMAGEWINDOW_H
 #define QCVIMAGEWINDOW_H
 
-// When you build this without OpenCV, uncomment a line below:
-//#define QCVIMAGEWINDOW_DONT_USE_OPENCV
+// When you build this without OpenCV, comment a line below:
+#define QCVIMAGEWINDOW_USE_OPENCV
 
 #include <QWidget>
 // For image window.
@@ -27,7 +27,7 @@ miniWindow->show();                                    // => Show the window of 
 // For Debug
 #include <QDebug>
 
-#ifndef QCVIMAGEWINDOW_DONT_USE_OPENCV
+#ifdef QCVIMAGEWINDOW_USE_OPENCV
     #include <opencv2/opencv.hpp>
 #endif
 
@@ -39,7 +39,7 @@ public:
     ~QCvImageWindow();
 
     bool setImageFromFilePath(QString);
-#ifndef QCVIMAGEWINDOW_DONT_USE_OPENCV
+#ifdef QCVIMAGEWINDOW_USE_OPENCV
     bool setImageFromCvMat(cv::Mat);
 #endif
 
@@ -53,7 +53,7 @@ private:
     QVBoxLayout* _currentWindowLayout;
     QImage* _showImage;
     QLabel* _imageLabel;
-#ifndef QCVIMAGEWINDOW_DONT_USE_OPENCV
+#ifdef QCVIMAGEWINDOW_USE_OPENCV
     cv::Mat _cvMatForQImage;
 #endif
 
