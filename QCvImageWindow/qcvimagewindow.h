@@ -1,5 +1,6 @@
 /*
 QCvImageWindow
+Supported: OpenCV 2.4.3, Qt 4.8.0
 
 Example:
 QCvImageWindow* miniWindow = new QCvImageWindow();
@@ -62,7 +63,7 @@ public slots:
 
 private slots:
     void contextMenu(const QPoint& pos);
-    void saveCurrentImage();
+    void saveCurrentImage(void);
 };
 
 #endif // QCVIMAGEWINDOW_H
